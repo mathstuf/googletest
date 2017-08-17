@@ -5,7 +5,9 @@
 # ctest.  You can select which tests to run using 'ctest -R regex'.
 # For more options, run 'ctest --help'.
 
-option(gmock_build_tests "Build all of Google Mock's own tests." OFF)
+if (NOT DEFINED gmock_build_tests)
+  option(gmock_build_tests "Build all of Google Mock's own tests." OFF)
+endif ()
 
 # A directory to find Google Test sources.
 if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/gtest/CMakeLists.txt")

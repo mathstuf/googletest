@@ -7,21 +7,31 @@
 
 # When other libraries are using a shared version of runtime libraries,
 # Google Test also has to use one.
-option(
-  gtest_force_shared_crt
-  "Use shared (DLL) run-time lib even when Google Test is built as static lib."
-  OFF)
+if (NOT DEFINED gtest_force_shared_crt)
+  option(
+    gtest_force_shared_crt
+    "Use shared (DLL) run-time lib even when Google Test is built as static lib."
+    OFF)
+endif ()
 
-option(gtest_build_tests "Build all of gtest's own tests." OFF)
+if (NOT DEFINED gtest_build_tests)
+  option(gtest_build_tests "Build all of gtest's own tests." OFF)
+endif ()
 
-option(gtest_build_samples "Build gtest's sample programs." OFF)
+if (NOT DEFINED gtest_build_samples)
+  option(gtest_build_samples "Build gtest's sample programs." OFF)
+endif ()
 
-option(gtest_disable_pthreads "Disable uses of pthreads in gtest." OFF)
+if (NOT DEFINED gtest_disable_pthreads)
+  option(gtest_disable_pthreads "Disable uses of pthreads in gtest." OFF)
+endif ()
 
-option(
-  gtest_hide_internal_symbols
-  "Build gtest with internal symbols hidden in shared libraries."
-  OFF)
+if (NOT DEFINED gtest_hide_internal_symbols)
+  option(
+    gtest_hide_internal_symbols
+    "Build gtest with internal symbols hidden in shared libraries."
+    OFF)
+endif ()
 
 # Defines pre_project_set_up_hermetic_build() and set_up_hermetic_build().
 include(cmake/hermetic_build.cmake OPTIONAL)

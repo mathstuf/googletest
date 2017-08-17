@@ -13,8 +13,12 @@ include(CMakeDependentOption)
 include(GNUInstallDirs)
 
 #Note that googlemock target already builds googletest
-option(BUILD_GMOCK "Builds the googlemock subproject" ON)
-option(INSTALL_GTEST "Enable installation of googletest. (Projects embedding googletest may want to turn this OFF.)" ON)
+if (NOT DEFINED BUILD_GMOCK)
+  option(BUILD_GMOCK "Builds the googlemock subproject" ON)
+endif ()
+if (NOT DEFINED INSTALL_GTEST)
+  option(INSTALL_GTEST "Enable installation of googletest. (Projects embedding googletest may want to turn this OFF.)" ON)
+endif ()
 
 if(BUILD_GMOCK)
   add_subdirectory( googlemock )
